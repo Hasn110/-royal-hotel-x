@@ -1,0 +1,71 @@
+.bookings-page {
+  padding: 20px 0;
+}
+
+.bookings-page > h1 {
+  margin-bottom: 30px;
+}
+
+.bookings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.booking-card {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 20px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.booking-card h3 {
+  color: var(--gold);
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.booking-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin: 0;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.status.confirmed {
+  background: rgba(74, 143, 106, 0.3);
+  color: var(--success);
+}
+
+.status.cancelled {
+  background: rgba(196, 92, 92, 0.3);
+  color: var(--danger);
+}
+
+.status.completed {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--gold);
+}
+
+@media (min-width: 768px) {
+  .bookings-list {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "royal-family-hotel",
+  "version": "1.0.0",
+  "description": "Full Stack Hotel Booking Application - فندق رويال فاميلي 2026",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start",
+    "seed": "cd backend && node scripts/seedRooms.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "keywords": [
+    "hotel",
+    "booking",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/royal-family-hotel"
+  }
+}

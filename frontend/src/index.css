@@ -1,0 +1,132 @@
+:root {
+  --charcoal: #1a1a1a;
+  --charcoal-deep: #0d0d0d;
+  --gold: #d4af37;
+  --white: #ffffff;
+  --cream: #f5f0e6;
+  --danger: #c45c5c;
+  --success: #4a8f6a;
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Tajawal", system-ui, sans-serif;
+  background: var(--charcoal-deep);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app--dark {
+  background: var(--charcoal-deep);
+  color: var(--white);
+}
+
+.app--light {
+  background: var(--cream);
+  color: var(--charcoal);
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Mobile first - tablet and up */
+@media (min-width: 768px) {
+  .main-content {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding: 60px 80px;
+  }
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  transition: var(--transition);
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  width: 100%;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.error-msg {
+  background: rgba(196, 92, 92, 0.2);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--gold);
+}
+
+h2 {
+  font-size: clamp(24px, 4vw, 36px);
+  color: var(--gold);
+}
+
+h3 {
+  font-size: clamp(18px, 3vw, 24px);
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: royal_family_mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      MONGO_INITDB_DATABASE: royal-family-hotel
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    container_name: royal_family_backend
+    ports:
+      - "5000:5000"
+    environment:
+      MONGODB_URI: mongodb://admin:admin123@mongodb:27017/royal-family-hotel?authSource=admin
+      PORT: 5000
+      JWT_SECRET: your_jwt_secret_key
+      NODE_ENV: development
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+volumes:
+  mongodb_data:
+
+networks:
+  default:
+    name: royal_family_network
