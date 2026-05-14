@@ -8,9 +8,15 @@
 
 .rooms-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
   margin-bottom: 40px;
+}
+
+@media (min-width: 480px) {
+  .rooms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 }
 
 .room-card {
