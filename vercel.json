@@ -1,13 +1,35 @@
 {
-    "experimentalServices": {
-        "frontend": {
-            "entrypoint": "frontend",
-            "routePrefix": "/",
-            "framework": "create-react-app"
-        },
-        "backend": {
-            "entrypoint": "backend",
-            "routePrefix": "/_/backend"
-        }
+  "version": 2,
+  "name": "royal-family-hotel",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "style.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "script.js",
+      "use": "@vercel/static"
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
 }
