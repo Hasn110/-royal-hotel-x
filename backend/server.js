@@ -30,7 +30,13 @@ app.get('/api/health', (req, res) => {
   res.json({ status: '✅ Server running', timestamp: new Date() });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+const serverless = require('serverless-http');
+
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = serverless(app);

@@ -1,35 +1,19 @@
 {
-  "version": 2,
+  "version": 3,
   "name": "royal-family-hotel",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
+  "services": {
+    "frontend": {
+      "src": "frontend",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      },
+      "routePrefix": "/"
     },
-    {
-      "src": "style.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "script.js",
-      "use": "@vercel/static"
+    "backend": {
+      "src": "backend/server.js",
+      "use": "@vercel/node",
+      "routePrefix": "/_/backend"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ]
+  }
 }
