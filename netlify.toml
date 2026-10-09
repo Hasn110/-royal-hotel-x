@@ -1,0 +1,9 @@
+# The live site is the static index.html / style.css / script.js at the repo root.
+# The frontend/ (React) and backend/ (Express + MongoDB) folders are not deployed.
+[build]
+  publish = "."
+  command = ""
+
+[dev]
+  framework = "#static"
+  publish = "."

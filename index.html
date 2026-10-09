@@ -478,6 +478,13 @@
     </div>
   </div>
 
+  <script>
+  /* Failsafe: always remove the loader, even if script.js fails to load or run */
+  setTimeout(function () {
+    var l = document.getElementById("app-loader");
+    if (l) { l.classList.add("is-hidden"); setTimeout(function () { l.remove(); }, 700); }
+  }, 4000);
+  </script>
   <script src="script.js"></script>
   <script>
   /* ── Premium animation enhancements ── */

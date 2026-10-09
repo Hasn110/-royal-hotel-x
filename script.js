@@ -1672,10 +1672,37 @@
     return { init, refresh };
   })();
 
-  /* Boot */
+  /* Boot — never leave the page stuck behind the loader if init fails */
+  function forceHideLoader() {
+    const loader = document.getElementById("app-loader");
+    loader?.classList.add("is-hidden");
+    setTimeout(() => loader?.remove(), 700);
+  }
+
+  function boot() {
+    try {
+      UIController.init();
+    } catch (err) {
+      console.error("App init failed:", err);
+      /* Corrupted saved data is the most common cause — clear it and reload once */
+      try {
+        if (!sessionStorage.getItem("rfh_boot_reset")) {
+          sessionStorage.setItem("rfh_boot_reset", "1");
+          localStorage.removeItem("rfh_app_state_v1");
+          localStorage.removeItem("rfh_user_reviews_v1");
+          location.reload();
+          return;
+        }
+      } catch (_) {
+        /* storage unavailable — fall through */
+      }
+      forceHideLoader();
+    }
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", UIController.init);
+    document.addEventListener("DOMContentLoaded", boot);
   } else {
-    UIController.init();
+    boot();
   }
 })();
